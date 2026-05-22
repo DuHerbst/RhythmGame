@@ -11,6 +11,8 @@ public class Note : MonoBehaviour
     [SerializeField] private int noteColumn; // The column this note belongs to
     [SerializeField] private int noteRow;
     
+    public int NoteColumn => noteColumn;
+    public int NoteRow => noteRow;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -48,5 +50,12 @@ public class Note : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    
+    public void NoteHit()
+    {
+        Debug.Log("Note Hit!");
+        Destroy(gameObject);
+    }
+    
     
 }
