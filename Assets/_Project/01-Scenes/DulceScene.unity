@@ -1188,6 +1188,14 @@ PrefabInstance:
       propertyPath: rhythmGrid
       value: 
       objectReference: {fileID: 632659013}
+    - target: {fileID: 6095015704198358667, guid: c66209d07e6d84eb0936c9fe5f53934c, type: 3}
+      propertyPath: scoreColour
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d33b022b555d4fc4ae23fa9ec7d80a9, type: 2}
+    - target: {fileID: 6095015704198358667, guid: c66209d07e6d84eb0936c9fe5f53934c, type: 3}
+      propertyPath: normalColour
+      value: 
+      objectReference: {fileID: 2100000, guid: 32acbc2af41f74949b39d91dc55f5f08, type: 2}
     - target: {fileID: 7763863191242719980, guid: c66209d07e6d84eb0936c9fe5f53934c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.64386594

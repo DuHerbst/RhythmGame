@@ -11,14 +11,21 @@ public class Note : MonoBehaviour
     [SerializeField] private int noteColumn; // The column this note belongs to
     [SerializeField] private int noteRow;
     
-    public int NoteColumn => noteColumn;
+    public int NoteColumn => noteColumn; 
     public int NoteRow => noteRow;
+    
+    //VISUALS
+    [SerializeField] private Material normalColour;
+    [SerializeField] private Material scoreColour;
+    private MeshRenderer _noteMeshRenderer;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //this note has to ask the rhythm grid where in the world is my position on the grid
         //move to that position
+        _noteMeshRenderer = GetComponent<MeshRenderer>();
+        _noteMeshRenderer.material = normalColour;
         transform.position = rhythmGrid.GetPositionInGrid(noteColumn, noteRow);
         
     }
@@ -41,6 +48,7 @@ public class Note : MonoBehaviour
         {
             // give points to the player
             Debug.Log("Note is in the score zone");
+            _noteMeshRenderer.material = scoreColour; // change the colour of the note to indicate that it is in the score zone
         }
         
         else if (noteRow > rhythmGrid.ScoreRow) // check if the note has gone past the score row

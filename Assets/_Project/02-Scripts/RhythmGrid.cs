@@ -23,6 +23,9 @@ public class RhythmGrid : MonoBehaviour
     private float _verticalPosition;
     private float _horizontalPosition;
 
+    //private Vector2Int _cellsize = new Vector2Int(1,1); // to make the note move on a cell but lerp visuals?
+    //private Vector2 _celldistance;
+
     void Start()
     {
         
