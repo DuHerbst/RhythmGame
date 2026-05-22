@@ -14,9 +14,14 @@ public class RhythmGrid : MonoBehaviour
     [SerializeField] private int totalColumns = 4;
     [SerializeField] private int totalRows = 7;
     
-    public int ScoreRow => scoreRow;
+    [SerializeField] private int perfectRow = 6;
+    [SerializeField] private int goodRow = 5;
+    [SerializeField] private int fairRow = 4;
     
-    [SerializeField] private int scoreRow = 6;
+    public int PerfectRow => perfectRow;
+    public int GoodRow => goodRow;
+    public int FairRow => fairRow; // we need the reference to these variables to be used everywhere?
+    
     [SerializeField] private float cellWidth;
     [SerializeField] private float cellHeight;
 
@@ -54,7 +59,7 @@ public class RhythmGrid : MonoBehaviour
         // uses this column and scoreRow and returns the position where the scoring happens
         // notes will ask if they are in the position, detecting each step on the grid
         
-        return GetPositionInGrid(column, scoreRow);
+        return GetPositionInGrid(column, perfectRow);
         
     }
     

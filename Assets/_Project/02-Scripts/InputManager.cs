@@ -20,22 +20,26 @@ public class InputManager : MonoBehaviour
             
             if (_keyboard.aKey.wasPressedThisFrame)
             {
-                PressPianoKey(0);
+                PressPianoKey(1);
+                Debug.Log("Key A Pressed");
             }
         
-            if (_keyboard.sKey.wasPressedThisFrame)
-            {
-                PressPianoKey(1);
-            }
-
             if (_keyboard.dKey.wasPressedThisFrame)
             {
                 PressPianoKey(2);
+                Debug.Log("Key D Pressed");
             }
-        
-            if (_keyboard.fKey.wasPressedThisFrame)
+
+            if (_keyboard.gKey.wasPressedThisFrame)
             {
                 PressPianoKey(3);
+                Debug.Log("Key G Pressed");
+            }
+        
+            if (_keyboard.jKey.wasPressedThisFrame)
+            {
+                PressPianoKey(4);
+                Debug.Log("Key J Pressed");
             }
             
         }
@@ -47,29 +51,24 @@ public class InputManager : MonoBehaviour
 
         if (pianoNote == null)
         {
-            Debug.Log("There is no note to hit right now");
             return;
         }
 
         if (pianoNote.NoteColumn != column)
         {
-            Debug.Log("Wrong lane");
             return;
         }
-        
-        
-        Debug.Log("note in the correct lane now");
         
 
-        if (pianoNote.NoteRow == rhythmGrid.ScoreRow)
+        if (pianoNote.NoteRow == rhythmGrid.PerfectRow || pianoNote.NoteRow == rhythmGrid.GoodRow || pianoNote.NoteRow == rhythmGrid.FairRow) // check if the note is in the correct row to give points
         {
-            Debug.Log("Note on the correct row");
-            pianoNote.NoteHit(); // call the method from the note script to destroy the note and give points to the player
-            return;
+            ScoreManager scoreManager = FindObjectOfType<ScoreManager>(); // find the score manager in the scene
+            scoreManager.UpdateScore(); // call the method to update the score based on the note's
+            
+            
+            pianoNote.PianoKeyHit(); // call the method from the note script to destroy the note and give points to the player
+            return; // exit the method after hitting the note
         }
-        
-        
-        Debug.Log("Not on the score row");
         
     }
     

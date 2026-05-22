@@ -20,7 +20,6 @@ public class MusicManager : MonoBehaviour
         //calculate the seconds per beat using 60 divided by the bpm
         secondsPerBeat = 60f / bpm;
         beatTimer = secondsPerBeat; //timer is being set!
-        Debug.Log("please give me the right beat!!" + secondsPerBeat);
         
     }
 
@@ -32,7 +31,6 @@ public class MusicManager : MonoBehaviour
         if (beatTimer <= 0)
         {
             currentBeat++;
-            Debug.Log("The current beat is " + currentBeat);
 
             if (musicNote != null)
             {

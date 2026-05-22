@@ -44,14 +44,14 @@ public class Note : MonoBehaviour
         noteRow++;
         transform.position = rhythmGrid.GetPositionInGrid(noteColumn, noteRow);
         
-        if (noteRow == rhythmGrid.ScoreRow) // check for the row that gives the score
+        if (noteRow == rhythmGrid.PerfectRow) // check for the row that gives the score
         {
             // give points to the player
             Debug.Log("Note is in the score zone");
             _noteMeshRenderer.material = scoreColour; // change the colour of the note to indicate that it is in the score zone
         }
         
-        else if (noteRow > rhythmGrid.ScoreRow) // check if the note has gone past the score row
+        else if (noteRow > rhythmGrid.PerfectRow) // check if the note has gone past the score row
         {
             // note missed, destroy without giving points
             Debug.Log("Note missed! No points");
@@ -59,9 +59,11 @@ public class Note : MonoBehaviour
         }
     }
     
-    public void NoteHit()
+    public void PianoKeyHit()
     {
         Debug.Log("Note Hit!");
+        ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
+        scoreManager.UpdateScore();
         Destroy(gameObject);
     }
     

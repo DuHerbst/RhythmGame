@@ -126,5 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   rhythmGrid: {fileID: 0}
-  noteColumn: 0
+  noteColumn: 1
   noteRow: 0
+  normalColour: {fileID: 0}
+  scoreColour: {fileID: 0}
