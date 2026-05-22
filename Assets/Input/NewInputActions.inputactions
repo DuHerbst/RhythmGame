@@ -1,0 +1,127 @@
+{
+    "version": 1,
+    "name": "NewInputActions",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "06019323-ad30-4457-967c-9dce33b26d76",
+            "actions": [
+                {
+                    "name": "A Key",
+                    "type": "Button",
+                    "id": "171d3d49-430a-449f-b90e-2a18aadcab65",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Hold(duration=1)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "D Key",
+                    "type": "Button",
+                    "id": "dac6cf83-6742-41f0-a24e-5037c5658441",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Hold(duration=1)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "G Key",
+                    "type": "Button",
+                    "id": "6074dec3-2969-4c7f-9180-983e7a032e1d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "J Key",
+                    "type": "Button",
+                    "id": "7f37e2fe-0e41-4883-b0e9-2321527b89e3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "L Key",
+                    "type": "Button",
+                    "id": "4c1e9af3-69b6-4e2a-a08e-d9ebe6a0eb06",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "378a62e3-4119-4e1d-9263-f1c98737653e",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "A Key",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "405a8790-38d3-4c38-a4f2-ed0978833528",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "D Key",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "86b7332a-def3-4a67-b071-334e98d4d2e9",
+                    "path": "<Keyboard>/g",
+                    "interactions": "Hold(duration=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "G Key",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dd2fb306-808b-4ce9-bb1f-583c99a9e8c9",
+                    "path": "<Keyboard>/j",
+                    "interactions": "Hold(duration=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "J Key",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "78c4db77-608c-45a5-8db9-4b00a7c8671a",
+                    "path": "<Keyboard>/l",
+                    "interactions": "Hold(duration=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "L Key",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Keyboard",
+            "bindingGroup": "Keyboard",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
