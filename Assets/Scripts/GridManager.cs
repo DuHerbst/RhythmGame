@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class GridManager : MonoBehaviour
 {
+    [HideInInspector]
     public List<Vector2Int> cellPositions = new List<Vector2Int>();
     
     void Start()
