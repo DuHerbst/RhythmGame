@@ -13,6 +13,9 @@ public class RhythmGrid : MonoBehaviour
     
     [SerializeField] private int totalColumns = 4;
     [SerializeField] private int totalRows = 7;
+    
+    public int ScoreRow => scoreRow;
+    
     [SerializeField] private int scoreRow = 6;
     [SerializeField] private float cellWidth;
     [SerializeField] private float cellHeight;
