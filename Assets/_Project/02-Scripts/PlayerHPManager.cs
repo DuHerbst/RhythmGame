@@ -6,7 +6,7 @@ using UnityEngine.UI;
 /// this script talks to the hp canvas to reduce the hp of the player when they fail to click a piano key on time on the spaces that are successful on the grid
 /// </summary>
 
-public class PlayerHPManager : MonoBehaviour
+public class PlayerHpManager : MonoBehaviour
 {
 
     public int maxChances = 3;

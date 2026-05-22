@@ -7,6 +7,7 @@ public class InputManager : MonoBehaviour
     private Keyboard _keyboard;
     [SerializeField] private Note pianoNote;
     [SerializeField] private RhythmGrid rhythmGrid;
+    [SerializeField] private ScoreManager scoreManager;
     
     private void Start()
     {
@@ -59,16 +60,25 @@ public class InputManager : MonoBehaviour
             return;
         }
         
+        scoreManager.UpdateScore(pianoNote);
+        
 
-        if (pianoNote.NoteRow == rhythmGrid.PerfectRow || pianoNote.NoteRow == rhythmGrid.GoodRow || pianoNote.NoteRow == rhythmGrid.FairRow) // check if the note is in the correct row to give points
+        if (pianoNote.CanBePlayed())
         {
-            ScoreManager scoreManager = FindObjectOfType<ScoreManager>(); // find the score manager in the scene
-            scoreManager.UpdateScore(); // call the method to update the score based on the note's
             
+            Destroy(pianoNote.gameObject);
             
-            pianoNote.PianoKeyHit(); // call the method from the note script to destroy the note and give points to the player
-            return; // exit the method after hitting the note
         }
+
+        else
+        {
+            
+            return;
+            
+        }
+        
+        
+        
         
     }
     

@@ -36,8 +36,6 @@ public class RhythmGrid : MonoBehaviour
         
         Debug.Log(totalColumns);
         Debug.Log(totalRows);
-        Debug.Log("This where the grid starts " + gridStartPoint.position);
-        Debug.Log("Score position for lane 1 " + GetScorePosition(0));
         
     }
     
