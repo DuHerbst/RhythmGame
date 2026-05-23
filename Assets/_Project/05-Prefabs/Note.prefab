@@ -126,7 +126,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   rhythmGrid: {fileID: 0}
-  noteColumn: 1
-  noteRow: 0
-  normalColour: {fileID: 0}
-  scoreColour: {fileID: 0}
+  noteColumn: 3
+  noteRow: 2
+  normalColour: {fileID: 2100000, guid: 32acbc2af41f74949b39d91dc55f5f08, type: 2}
+  perfectColour: {fileID: 2100000, guid: 4d33b022b555d4fc4ae23fa9ec7d80a9, type: 2}
+  goodColour: {fileID: 2100000, guid: e283a080af19f4320bf1bddc40f79d1d, type: 2}
+  fairColour: {fileID: 2100000, guid: 294b814b3cb804f1eb54de4098851538, type: 2}
+  missedColour: {fileID: 2100000, guid: 80a64da3d64fc4236a2822ed4ed2b1cf, type: 2}

@@ -82,6 +82,18 @@ public class Note : MonoBehaviour
         }
     }
     
+    public void WhereIsTheNote(int column, int row, RhythmGrid grid) //locates the position of where the note will spawn always same row, different column depending on key?
+
+    {
+        
+        noteColumn =  column;
+        noteRow = row;
+        rhythmGrid = grid;
+        
+        transform.position = rhythmGrid.GetPositionInGrid(noteColumn, noteRow);
+        
+    }  
+    
     public void PianoKeyHit()
     {
         Destroy(gameObject);

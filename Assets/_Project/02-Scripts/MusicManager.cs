@@ -43,6 +43,11 @@ public class MusicManager : MonoBehaviour
         
     }
     
+    //can this be an event bus? Like everytime theres a beat -- when the beat happens, the music manager can announce to all the notes that a beat has happened
+    // notes move down the grid after listenign to the beat
+    
+    
+    
     
     
 }
