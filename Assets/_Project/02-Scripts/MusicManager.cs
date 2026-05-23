@@ -2,6 +2,9 @@ using UnityEngine;
 
 /// <summary>
 /// This script manages the bpm, and the timing of the music in the game
+/// needs and event that announces to the notes when a beat happens so they can move down the grid
+/// the bpm will always be at 120 for now
+/// 
 /// </summary>
 public class MusicManager : MonoBehaviour
 {
@@ -11,7 +14,9 @@ public class MusicManager : MonoBehaviour
     [SerializeField] private float secondsPerBeat = 0.5f; // how long a beat lasts. 60 seconds divided by bpm
     
     [SerializeField] private float beatTimer; // timers always need decimals, always floats-- counts the time until the next beat
-    [SerializeField] private Note musicNote;
+    
+    
+    public static event System.Action OnBeat; // other scripts will subscribe to this event 
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -31,13 +36,9 @@ public class MusicManager : MonoBehaviour
         if (beatTimer <= 0)
         {
             currentBeat++;
-
-            if (musicNote != null)
-            {
-                musicNote.SongBeatHappened();
-            }
-
+            AnnounceBeat(); 
             beatTimer = secondsPerBeat;
+            
         }
         
         
@@ -45,9 +46,10 @@ public class MusicManager : MonoBehaviour
     
     //can this be an event bus? Like everytime theres a beat -- when the beat happens, the music manager can announce to all the notes that a beat has happened
     // notes move down the grid after listenign to the beat
-    
-    
-    
-    
-    
+
+
+    private void AnnounceBeat()
+    {
+        OnBeat?.Invoke();
+    }
 }

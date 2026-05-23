@@ -8,8 +8,8 @@ public class NoteSpawner : MonoBehaviour
     [SerializeField] float spawnTimer = 1.2f;
 
     [SerializeField] private RhythmGrid rhythmGrid;
-   
     [SerializeField] GameObject notePrefab;
+    [SerializeField] private PlayerHpManager playerHpManager;
     [SerializeField] private int startingRow;
 
     void Start()
@@ -30,7 +30,7 @@ public class NoteSpawner : MonoBehaviour
         while (true)
         {
             
-            int randomColumn = Random.Range(1, 5);
+            int randomColumn = Random.Range(0, 4);
             GameObject spawnedNoteGameObject = Instantiate(notePrefab, transform.position, Quaternion.identity);
             Note spawnedNoteScript = spawnedNoteGameObject.GetComponent<Note>();
             
@@ -40,7 +40,7 @@ public class NoteSpawner : MonoBehaviour
             }
             
             
-            spawnedNoteScript.WhereIsTheNote(randomColumn, startingRow, rhythmGrid);
+            spawnedNoteScript.WhereIsTheNote(randomColumn, startingRow, rhythmGrid, playerHpManager);
             yield return new WaitForSeconds(spawnTimer);
             
         }

@@ -18,6 +18,8 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] public int perfectScore;
     [SerializeField] public int goodScore;
     [SerializeField] public int fairScore;
+    [SerializeField] private int earlyPenalty = 10; // penalty for hitting a note too early
+
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -54,7 +56,7 @@ public class ScoreManager : MonoBehaviour
         {
             // note missed, reduce player hp by 1
             Debug.Log("Missed! -1 HP");
-            totalScore -= perfectScore;
+            totalScore -= earlyPenalty; // if the player hits the note too early, they get a penalty to their score
             playerHealth.MissedNote(1);
         }
         

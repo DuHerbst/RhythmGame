@@ -8,6 +8,8 @@ public class Note : MonoBehaviour
 
 {
     [SerializeField] private RhythmGrid rhythmGrid; // Reference to the RhythmGrid script
+    [SerializeField] private PlayerHpManager playerHealth; // Reference to the PlayerHpManager script to reduce health if note is missed
+    
     [SerializeField] private int noteColumn; // The column this note belongs to
     [SerializeField] private int noteRow;
     
@@ -32,12 +34,6 @@ public class Note : MonoBehaviour
         transform.position = rhythmGrid.GetPositionInGrid(noteColumn, noteRow);
         
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     
     // Observer Note receives that announcement and decreases its location on the rows. Communicates with the grid where should it go
     // Note moves to the new position and checks if it is in the score position, if it is, it gives points to the player and destroys itself. If it goes past the score position, it destroys itself without giving points to the player.
@@ -53,7 +49,18 @@ public class Note : MonoBehaviour
         return false;
         
     }
-    public void SongBeatHappened()
+
+    private void OnEnable()
+    {
+        MusicManager.OnBeat += SongBeatHappened; // subscribe to the event when the note is enabled
+    }
+
+    private void OnDisable()
+    {
+        MusicManager.OnBeat -= SongBeatHappened; // unsubscribe to the event when the note is disabled to prevent memory leaks
+    }
+    
+    public void SongBeatHappened() // needs to be subscribed to the event 
     {
         noteRow++;
         transform.position = rhythmGrid.GetPositionInGrid(noteColumn, noteRow);
@@ -77,18 +84,27 @@ public class Note : MonoBehaviour
         {
             // note missed, destroy without giving points
             _noteMeshRenderer.material = missedColour;
-            Debug.Log("Note missed! No points");
+
+            if (playerHealth != null)
+            {
+                
+                playerHealth.MissedNote(1); // reduce player health by 1 if the note is missed
+
+            }
+            
+            
             Destroy(gameObject);
         }
     }
     
-    public void WhereIsTheNote(int column, int row, RhythmGrid grid) //locates the position of where the note will spawn always same row, different column depending on key?
+    public void WhereIsTheNote(int column, int row, RhythmGrid grid, PlayerHpManager health) //locates the position of where the note will spawn always same row, different column depending on key?
 
     {
         
         noteColumn =  column;
         noteRow = row;
         rhythmGrid = grid;
+        playerHealth = health; // find the player health manager in the scene to reduce health if note is missed
         
         transform.position = rhythmGrid.GetPositionInGrid(noteColumn, noteRow);
         

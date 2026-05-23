@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SocialPlatforms.Impl;
 
 
 public class InputManager : MonoBehaviour
 {
     private Keyboard _keyboard;
-    [SerializeField] private Note pianoNote;
     [SerializeField] private RhythmGrid rhythmGrid;
     [SerializeField] private ScoreManager scoreManager;
     
@@ -21,25 +21,25 @@ public class InputManager : MonoBehaviour
             
             if (_keyboard.aKey.wasPressedThisFrame)
             {
-                PressPianoKey(1);
+                PressPianoKey(0);
                 Debug.Log("Key A Pressed");
             }
         
             if (_keyboard.dKey.wasPressedThisFrame)
             {
-                PressPianoKey(2);
+                PressPianoKey(1);
                 Debug.Log("Key D Pressed");
             }
 
             if (_keyboard.gKey.wasPressedThisFrame)
             {
-                PressPianoKey(3);
+                PressPianoKey(2);
                 Debug.Log("Key G Pressed");
             }
         
             if (_keyboard.jKey.wasPressedThisFrame)
             {
-                PressPianoKey(4);
+                PressPianoKey(3);
                 Debug.Log("Key J Pressed");
             }
             
@@ -50,35 +50,46 @@ public class InputManager : MonoBehaviour
     private void PressPianoKey(int column)
     {
 
-        if (pianoNote == null)
+        Note[] activeNotes = FindObjectsByType<Note>(FindObjectsSortMode.None); // Find all active notes in the scene, we need to check if any of them are in the column that was pressed and if they are in the perfect, good or fair row, then we can update the score accordingly
+
+        Note bestNote = null;
+
+        foreach (Note note in activeNotes)
+            
         {
-            return;
+            if (note.NoteColumn != column)
+            {
+                continue;
+            }
+
+            if (bestNote == null)
+            {
+
+                bestNote = note;
+
+            }
+
+            else if
+                (note.NoteRow >
+                 bestNote.NoteRow) // check if the note is closer to the perfect row than the current best note, we want to check the note that is closest to the perfect row to give the most accurate score
+            {
+                bestNote = note;
+            }
+
         }
 
-        if (pianoNote.NoteColumn != column)
+        if (bestNote == null)
         {
+            Debug.LogWarning("No active notes found in the column: " + column);
             return;
         }
         
-        scoreManager.UpdateScore(pianoNote);
-        
+        scoreManager.UpdateScore(bestNote); // update the score based on the note that was hit, we need to make sure that we are updating the score based on the note that was hit and not just any note in the column
 
-        if (pianoNote.CanBePlayed())
-        {
-            
-            Destroy(pianoNote.gameObject);
-            
+        if (bestNote.CanBePlayed()) // check if the note can be played, if it is in the perfect, good or fair row
+        { 
+            Destroy(bestNote.gameObject); // destroy the note if it can be played, we need to make sure that the note is destroyed after it is played to prevent it from being scored multiple times
         }
-
-        else
-        {
-            
-            return;
-            
-        }
-        
-        
-        
         
     }
     
