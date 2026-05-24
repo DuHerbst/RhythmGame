@@ -35,27 +35,20 @@ public class ScoreManager : MonoBehaviour
         
         if (noteRow == rhythmGrid.PerfectRow)
         {
-            // give 5 points
             totalScore += perfectScore;
-            Debug.Log("Perfect! +5 points");
         }
         else if (noteRow == rhythmGrid.GoodRow)
         {
-            // give 3 points
             totalScore += goodScore;
-            Debug.Log("Good! +3 points");
+           
         }
         else if (noteRow == rhythmGrid.FairRow)
         {
-            // give 1 point
             totalScore += fairScore;
-            Debug.Log("Fair! +1 point");
         }
         
         else if (noteRow < rhythmGrid.FairRow)
         {
-            // note missed, reduce player hp by 1
-            Debug.Log("Missed! -1 HP");
             totalScore -= earlyPenalty; // if the player hits the note too early, they get a penalty to their score
             playerHealth.MissedNote(1);
         }

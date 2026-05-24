@@ -22,25 +22,21 @@ public class InputManager : MonoBehaviour
             if (_keyboard.aKey.wasPressedThisFrame)
             {
                 PressPianoKey(0);
-                Debug.Log("Key A Pressed");
             }
         
             if (_keyboard.dKey.wasPressedThisFrame)
             {
                 PressPianoKey(1);
-                Debug.Log("Key D Pressed");
             }
 
             if (_keyboard.gKey.wasPressedThisFrame)
             {
                 PressPianoKey(2);
-                Debug.Log("Key G Pressed");
             }
         
             if (_keyboard.jKey.wasPressedThisFrame)
             {
                 PressPianoKey(3);
-                Debug.Log("Key J Pressed");
             }
             
         }
@@ -80,15 +76,23 @@ public class InputManager : MonoBehaviour
 
         if (bestNote == null)
         {
-            Debug.LogWarning("No active notes found in the column: " + column);
             return;
         }
         
         scoreManager.UpdateScore(bestNote); // update the score based on the note that was hit, we need to make sure that we are updating the score based on the note that was hit and not just any note in the column
 
         if (bestNote.CanBePlayed()) // check if the note can be played, if it is in the perfect, good or fair row
-        { 
-            Destroy(bestNote.gameObject); // destroy the note if it can be played, we need to make sure that the note is destroyed after it is played to prevent it from being scored multiple times
+        {
+            if (bestNote.IsHoldNote())
+            {
+                bestNote.StartHoldNote();
+                Debug.Log("Hold note started!");
+            }
+            
+            else
+            {
+                Destroy(bestNote.gameObject); // destroy the note if it can be played, we need to make sure that the note is destroyed after it is played to prevent it from being scored multiple times
+            }
         }
         
     }

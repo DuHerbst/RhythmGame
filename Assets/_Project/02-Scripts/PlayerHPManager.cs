@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class PlayerHpManager : MonoBehaviour
 {
 
-    public int maxChances = 3;
+    public int maxChances;
     public int currentChances;
 
     public Image[] hearts; //an array to hold all the heart images on the scene
@@ -36,7 +36,7 @@ public class PlayerHpManager : MonoBehaviour
         if (currentChances <= 0)
         {
             currentChances = 0; // health cant go lower than 0
-            GameManager.Instance.GameOver();
+            //GameManager.Instance.GameOver();
             
         }
     }

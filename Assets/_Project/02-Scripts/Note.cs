@@ -2,11 +2,24 @@ using UnityEngine;
 
 /// <summary>
 /// This script handles the logic of the note and how it communicates it's location on the grid
+/// Each note has its own type and can be tap once or held
+/// each note has to know what it is so the spawner doenst overlap notes when one is held
 /// </summary>
 
 public class Note : MonoBehaviour
 
 {
+
+    public enum NoteType
+    {
+        Tap,
+        Hold,
+    }
+    
+    [SerializeField] private NoteType noteType;
+    [SerializeField] private int holdBeats; // how many beats some notes can be held
+    private bool _isBeingHeld;
+    
     [SerializeField] private RhythmGrid rhythmGrid; // Reference to the RhythmGrid script
     [SerializeField] private PlayerHpManager playerHealth; // Reference to the PlayerHpManager script to reduce health if note is missed
     
@@ -113,6 +126,39 @@ public class Note : MonoBehaviour
     public void PianoKeyHit()
     {
         Destroy(gameObject);
+    }
+
+    public void SetNoteType(NoteType type)
+    {
+        noteType = type;
+        Debug.Log(noteType);
+    }
+    
+    public void SetHoldBeats(int beats)
+    {
+        holdBeats = beats;
+
+        transform.localScale = new Vector3(
+            transform.localScale.x,
+            beats,
+            transform.localScale.z
+        );
+    }
+
+    public int GetHoldBeats()
+    {
+        return holdBeats;
+    }
+
+    public bool IsHoldNote()
+    {
+        return noteType == NoteType.Hold;
+    }
+    
+    public void StartHoldNote()
+    {
+        _isBeingHeld = true;
+        Debug.Log("started holding a note!");
     }
     
     
