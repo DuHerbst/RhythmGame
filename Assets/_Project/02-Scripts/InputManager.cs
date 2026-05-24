@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.InputSystem.Interactions;
 
 
 public class InputManager : MonoBehaviour
@@ -136,25 +136,66 @@ public class InputManager : MonoBehaviour
 
     private void KeyPressedA(InputAction.CallbackContext context)
     {
-        //Debug.Log("Key pressed A");
-        PressPianoKey(0);
+        //put whatever you want for the tap
+        if (context.interaction is TapInteraction)
+        {
+            //Debug.Log("stop tapping me(A) bro");
+            PressPianoKey(0);
+        }
+        
+        // same thing for the hold
+        if (context.interaction is HoldInteraction)
+        {
+            //Debug.Log("stop holding me(A)!");
+        }
+        
     }
 
     private void KeyPressedD(InputAction.CallbackContext context)
     {
-        //Debug.Log("Key pressed D");
-        PressPianoKey(1);
+        //put whatever you want for the tap
+        if (context.interaction is TapInteraction)
+        {
+            //Debug.Log("You tapped D key");
+            PressPianoKey(1);    
+        }
+
+        // same thing for the hold
+        if (context.interaction is HoldInteraction)
+        {
+            //Debug.Log("stop holding me(D)!");
+        }
     }
 
     private void KeyPressedG(InputAction.CallbackContext context)
-    {
-        //Debug.Log("Key pressed G");
-        PressPianoKey(2);
+    {   
+        //put whatever you want for the tap
+        if (context.interaction is TapInteraction)
+        {
+            //Debug.Log("G key tapped");
+            PressPianoKey(2);    
+        }
+        // same thing for the hold
+        if (context.interaction is HoldInteraction)
+        {
+            //Debug.Log("Are you insane ?!");                
+        }
+        
     }
     private void KeyPressedJ(InputAction.CallbackContext context)
     {
-        //Debug.Log("Key pressed J");
-        PressPianoKey(3);
+        //put whatever you want for the tap
+        if (context.interaction is TapInteraction)
+        {
+            //Debug.Log("J TAP");
+            PressPianoKey(3);    
+        }
+
+        if (context.interaction is HoldInteraction)
+        {
+            //Debug.Log("J hold");        
+        }
+        
     }
 
 

@@ -98,7 +98,7 @@ public partial class @NewInputActions: IInputActionCollection2, IDisposable
                     ""id"": ""171d3d49-430a-449f-b90e-2a18aadcab65"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": ""Hold(duration=0.5)"",
+                    ""interactions"": ""Hold(duration=0.5),Tap"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -107,7 +107,7 @@ public partial class @NewInputActions: IInputActionCollection2, IDisposable
                     ""id"": ""dac6cf83-6742-41f0-a24e-5037c5658441"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": ""Hold(duration=0.5)"",
+                    ""interactions"": ""Hold(duration=0.5),Tap"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -165,7 +165,7 @@ public partial class @NewInputActions: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""86b7332a-def3-4a67-b071-334e98d4d2e9"",
                     ""path"": ""<Keyboard>/g"",
-                    ""interactions"": ""Hold(duration=0.5)"",
+                    ""interactions"": ""Hold(duration=0.5),Tap"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""G Key"",
@@ -176,7 +176,7 @@ public partial class @NewInputActions: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""dd2fb306-808b-4ce9-bb1f-583c99a9e8c9"",
                     ""path"": ""<Keyboard>/j"",
-                    ""interactions"": ""Hold(duration=0.5)"",
+                    ""interactions"": ""Hold(duration=0.5),Tap"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""J Key"",
@@ -187,7 +187,7 @@ public partial class @NewInputActions: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""78c4db77-608c-45a5-8db9-4b00a7c8671a"",
                     ""path"": ""<Keyboard>/l"",
-                    ""interactions"": ""Hold(duration=0.5)"",
+                    ""interactions"": ""Hold(duration=0.5),Tap"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""L Key"",
