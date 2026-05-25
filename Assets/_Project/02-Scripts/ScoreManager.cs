@@ -20,6 +20,8 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] public int fairScore;
     [SerializeField] private int earlyPenalty = 10; // penalty for hitting a note too early
 
+    //particle reference
+    [SerializeField] ParticleSystem vfxPrefab;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,6 +38,12 @@ public class ScoreManager : MonoBehaviour
         if (noteRow == rhythmGrid.PerfectRow)
         {
             totalScore += perfectScore;
+
+            //particles implementation
+            if (vfxPrefab != null)
+            {
+                vfxPrefab.Play();        
+            }
         }
         else if (noteRow == rhythmGrid.GoodRow)
         {
