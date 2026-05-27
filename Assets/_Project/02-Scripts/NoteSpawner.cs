@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Net;
-using System.Security.Cryptography;
 using UnityEngine;
 
 public class NoteSpawner : MonoBehaviour
